@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Sharon Photography</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <a href="index.html">SHARON PHOTOGRAPHY</a>
+    <nav aria-label="Admin navigation">
+      <a href="index.html#gallery">View Gallery</a>
+      <button class="ghost-btn" type="button" data-export>Export JSON</button>
+    </nav>
+  </header>
+
+  <main class="admin-shell">
+    <section class="admin-hero">
+      <p class="eyebrow">Media Dashboard</p>
+      <h1>Curate gallery media.</h1>
+      <p>Static mode saves changes in this browser. Use image paths like assets/images/bride/31.jpg after placing files in the project, or add a local file for a browser-stored preview.</p>
+    </section>
+
+    <section class="admin-grid">
+      <form class="media-form" data-media-form>
+        <input type="hidden" name="id">
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" placeholder="Bridal portrait 31" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="bride">Bride</option>
+              <option value="couple">Couple</option>
+              <option value="formal">Formal</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="layout">Bento size</label>
+            <select id="layout" name="layout">
+              <option value="">Standard</option>
+              <option value="bento-item--wide">Wide</option>
+              <option value="bento-item--tall">Tall</option>
+              <option value="bento-item--hero">Hero</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="src">Image path or URL</label>
+          <input id="src" name="src" type="text" placeholder="Uploaded image path will appear here" readonly>
+        </div>
+        <div class="field">
+          <label for="file">Or choose local image</label>
+          <input id="file" name="file" type="file" accept="image/*">
+        </div>
+        <div class="field">
+          <label for="alt">Alt text</label>
+          <textarea id="alt" name="alt" rows="3" placeholder="Bride in an elegant editorial wedding portrait"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="primary-btn" type="submit">Save Media</button>
+          <button class="ghost-btn" type="button" data-reset-form>Clear</button>
+        </div>
+      </form>
+
+      <aside class="admin-panel">
+        <div>
+          <p class="eyebrow">Preview</p>
+          <figure class="preview-frame">
+            <img data-preview-image alt="">
+          </figure>
+        </div>
+        <div class="import-box">
+          <label for="import-json">Import JSON</label>
+          <textarea id="import-json" rows="6" data-import-json placeholder='[{"title":"Bride","category":"bride","src":"assets/images/bride/31.jpg"}]'></textarea>
+          <button class="ghost-btn" type="button" data-import>Import</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="library-section">
+      <div class="library-top">
+        <div>
+          <p class="eyebrow">Saved Media</p>
+          <h2>Browser library</h2>
+        </div>
+        <button class="danger-btn" type="button" data-clear-library>Clear Library</button>
+      </div>
+      <div class="media-library" data-media-library></div>
+    </section>
+  </main>
+
+  <template id="media-card-template">
+    <article class="media-card">
+      <img alt="">
+      <div>
+        <span></span>
+        <h3></h3>
+        <p></p>
+      </div>
+      <div class="media-card__actions">
+        <button class="ghost-btn" type="button" data-edit>Edit</button>
+        <button class="danger-btn" type="button" data-delete>Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="admin.js" defer></script>
+</body>
+</html>
